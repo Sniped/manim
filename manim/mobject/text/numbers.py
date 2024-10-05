@@ -138,14 +138,6 @@ class DecimalNumber(VMobject, metaclass=ConvertToOpenGL):
             },
         )
 
-        if "color" in kwargs:
-            print(self.fill_rgbas)
-            print(self.fill_rgbas[0].any())
-            print(self.stroke_rgbas)
-            print(self.stroke_rgbas[0].any())
-            print(self.fill_color)
-            print(self.stroke_color)
-
         self._set_submobjects_from_number(number)
         self.init_colors()
 
