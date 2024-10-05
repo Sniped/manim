@@ -99,7 +99,13 @@ class DecimalNumber(VMobject, metaclass=ConvertToOpenGL):
         fill_opacity: float = 1.0,
         **kwargs,
     ):
-        super().__init__(**kwargs, stroke_width=stroke_width)
+        super().__init__(
+            **kwargs,
+            stroke_width=stroke_width,
+            fill_color=kwargs.get("color"),
+            stroke_color=kwargs.get("color"),
+            fill_opacity=fill_opacity,
+        )
         self.number = number
         self.num_decimal_places = num_decimal_places
         self.include_sign = include_sign
@@ -131,6 +137,14 @@ class DecimalNumber(VMobject, metaclass=ConvertToOpenGL):
                 "fill_opacity": fill_opacity,
             },
         )
+
+        if "color" in kwargs:
+            print(self.fill_rgbas)
+            print(self.fill_rgbas[0].any())
+            print(self.stroke_rgbas)
+            print(self.stroke_rgbas[0].any())
+            print(self.fill_color)
+            print(self.stroke_color)
 
         self._set_submobjects_from_number(number)
         self.init_colors()
